@@ -11,9 +11,8 @@ app.set("view engine", "ejs");
 
 app.get('/', (req, res) => {
 
-    res.send("Hello World!");
+    res.redirect("/scanner");
 })
-
 
 app.get('/scanner', (req, res) => {
     res.render("scanner");
