@@ -1,21 +1,27 @@
 const express = require('express');
 const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
+var expressLayouts = require('express-ejs-layouts');
 const app = express();
 
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressLayouts);
 app.use(express.static(__dirname + "/public"));
 app.set("view engine", "ejs");
 
 
 app.get('/', (req, res) => {
 
-    res.redirect("/scanner");
+    res.render("home", {
+        title: "Home"
+    });
 })
 
 app.get('/scanner', (req, res) => {
-    res.render("scanner");
+    res.render("scanner", {
+        title: "QR Code Scanner"
+    });
 })
 
 
@@ -30,13 +36,6 @@ client.connect(err => {
 
 
 
-
-
-
-
-
-
-
 app.listen(3000, () => {
-    console.log("Sever started!")
+    console.log("Sever started on port " + 3000);
 });

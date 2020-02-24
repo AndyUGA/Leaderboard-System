@@ -41,6 +41,9 @@
         scanner.addListener('scan', function (content) {
             document.getElementById("result").innerHTML = content;
             console.log(content);
+            let test = JSON.parse(content);
+            console.log(test);
+            console.log(test.workshop1);
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
