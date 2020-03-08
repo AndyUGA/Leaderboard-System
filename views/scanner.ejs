@@ -40,9 +40,15 @@
         let scanner = new Instascan.Scanner({ video: document.getElementById('preview') });
         scanner.addListener('scan', function (content) {
             document.getElementById("result").innerHTML = content;
-            console.log(content);
-         
 
+
+            console.log(content);
+            let jsonContent = JSON.parse(content);
+            console.log(jsonContent.id);
+            //let jsonContent = "{" + content.substring(3);
+            //let formattedJSON = JSON.parse(jsonContent);
+            //console.log(formattedJSON.id);
+            
 
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function () {
@@ -50,7 +56,7 @@
                     console.log("/increasePoints request has been sent!");
                 }
             };
-            xhttp.open("POST", "/increase");
+            xhttp.open("POST", "/increasePoints/" + jsonContent.id);
             xhttp.send();
 
 

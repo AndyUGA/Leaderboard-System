@@ -69,11 +69,12 @@ client.connect(err => {
 
     });
 
-    app.post('/increase', (req, res) => {
+    app.post('/increasePoints/:id', (req, res) => {
 
+        const personID = req.params.id;
+        console.log(75, personID);
 
-
-        const attendeeID = { _id: new ObjectID("5e49f386871ddf63a00498c1") };
+        const attendeeID = { _id: new ObjectID(personID) };
 
         let attendeePoints = {
             $set: {
