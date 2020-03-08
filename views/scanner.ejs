@@ -16,22 +16,22 @@
 
 <body>
 
-    <div class = "container justify-content-center"> 
+    <div class="container justify-content-center">
 
-        <div class = "row">
-            <div class = "col d-flex flex-column justify-content-center align-items-center min-vh-100"> 
-                    <video  width="530" height="450" id="preview"></video>
+        <div class="row">
+            <div class="col d-flex flex-column justify-content-center align-items-center min-vh-100">
+                <video width="530" height="450" id="preview"></video>
 
-                    <div>
-                        Results: 
-                
-                    </div>
-                    <div id="result">
-                    </div>
+                <div>
+                    Results:
+
+                </div>
+                <div id="result">
+                </div>
             </div>
         </div>
     </div>
-   
+
 
 
 
@@ -41,9 +41,21 @@
         scanner.addListener('scan', function (content) {
             document.getElementById("result").innerHTML = content;
             console.log(content);
-            let test = JSON.parse(content);
-            console.log(test);
-            console.log(test.workshop1);
+         
+
+
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    console.log("/increasePoints request has been sent!");
+                }
+            };
+            xhttp.open("POST", "/increase");
+            xhttp.send();
+
+
+
+
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
@@ -55,6 +67,12 @@
             console.error(e);
         });
     </script>
+
+
+
+
+
+
 </body>
 
 </html>
