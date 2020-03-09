@@ -1,4 +1,5 @@
 const express = require('express');
+require('dotenv').config();
 const MongoClient = require("mongodb").MongoClient;
 const bodyParser = require("body-parser");
 var expressLayouts = require('express-ejs-layouts');
@@ -6,7 +7,8 @@ const app = express();
 var ObjectID = require("mongodb").ObjectID;
 
 
-const uri = "mongodb+srv://andy:test123@cluster0-iuoam.mongodb.net/test?retryWrites=true&w=majority";
+const uri=process.env.connection;
+
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const axios = require('axios');
@@ -20,7 +22,7 @@ app.set("view engine", "ejs");
 
 
 client.connect(err => {
-    const collection = client.db("test").collection("element3");
+    const collection = client.db("test").collection("Element3");
 
 
     app.get('/', (req, res) => {
