@@ -44,7 +44,7 @@
 
             console.log(content);
             let jsonContent = JSON.parse(content);
-            console.log(jsonContent.id);
+            console.log(47, jsonContent.id);
             //let jsonContent = "{" + content.substring(3);
             //let formattedJSON = JSON.parse(jsonContent);
             //console.log(formattedJSON.id);
@@ -58,10 +58,6 @@
             };
             xhttp.open("POST", "/increasePoints/" + jsonContent.id);
             xhttp.send();
-
-
-
-
         });
         Instascan.Camera.getCameras().then(function (cameras) {
             if (cameras.length > 0) {
