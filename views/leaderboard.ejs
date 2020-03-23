@@ -1,6 +1,28 @@
+
+
+
+
+<div class="container py-5">
+  <div class="row text-center">
+    <div class="col-6 col-md-3 pb-3 pb-md-0">
+      <img class="img-fluid maxCardWidth" src="./Images/earth.png" alt="Card image cap">
+    </div>
+    <div class="col-6 col-md-3 pb-3 pb-md-0">
+      <img class="img-fluid maxCardWidth" src="./Images/water.png" alt="Card image cap">
+    </div>
+    <div class="col-6 col-md-3">
+      <img class="img-fluid maxCardWidth" src="./Images/wind.png" alt="Card image cap">
+    </div>
+    <div class="col-6 col-md-3">
+      <img class="img-fluid maxCardWidth" src="./Images/fire.png" alt="Card image cap">
+    </div>
+  </div>
+</div>
+
+
 <table class="table">
   <thead>
-    <tr class = "text-center">
+    <tr class="text-center">
       <th scope="col">Name</th>
       <th scope="col">Points</th>
 
@@ -9,13 +31,17 @@
   <tbody>
     <% for(let i = 0; i < result.length; i++) { %>
 
-    <tr class = "text-center">
+      <tr class="text-center">
 
-      <td><%= result[i].name%></td>
-      <td><%= result[i].points%></td>
-    </tr>
+        <td>
+          <%= result[i].name%>
+        </td>
+        <td>
+          <%= result[i].points%>
+        </td>
+      </tr>
 
-    <% } %>
-   
+      <% } %>
+
   </tbody>
 </table>
