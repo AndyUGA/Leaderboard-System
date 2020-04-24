@@ -71,29 +71,38 @@ client.connect(err => {
 
     });
 
-    app.post('/increasePoints/:id', (req, res) => {
+    app.post('/increasePoints', (req, res) => {
 
         const personID = req.params.id;
-        console.log(75, personID);
+        const points = parseInt(req.body.points); 
+        const teamName = req.body.teamName;
 
-        const attendeeID = { _id: new ObjectID(personID) };
+        console.log(80, teamName);
+        console.log(81, points);
 
-        let attendeePoints = {
-            $set: {
-                points: 50
+        //const attendeeID = { _id: new ObjectID(personID) };
+        const teamIdentifier = {
+            name: teamName
+        };
+        let teamPoints = {
+            $inc: {
+                points: points
             }
         }
 
 
-        collection.updateOne(attendeeID, attendeePoints, (err, item) => {
+        collection.updateOne(teamIdentifier, teamPoints, (err, item) => {
             if (err) {
                 res.send({ "Error is ": + err });
             }
             else {
-                console.log("Points updated!");
+                console.log("Added " + points + " points to " + teamName);
             }
         })
+        res.redirect("/");
     });
+
+
 
 
 });
