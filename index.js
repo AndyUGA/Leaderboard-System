@@ -7,7 +7,7 @@ const app = express();
 var ObjectID = require("mongodb").ObjectID;
 
 
-const uri=process.env.connection;
+const uri = process.env.connection;
 
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 
@@ -23,7 +23,7 @@ app.set("view engine", "ejs");
 
 client.connect(err => {
     const collection = client.db("test").collection("Element3");
-
+    const element3History = client.db("test").collection("Element3History");
 
     app.get('/', (req, res) => {
 
@@ -74,8 +74,11 @@ client.connect(err => {
     app.post('/increasePoints', (req, res) => {
 
         const personID = req.params.id;
-        const points = parseInt(req.body.points); 
+        const points = parseInt(req.body.points);
         const teamName = req.body.teamName;
+
+        const name = req.body.player;
+        const game = req.body.game;
 
         console.log(80, teamName);
         console.log(81, points);
@@ -84,23 +87,75 @@ client.connect(err => {
         const teamIdentifier = {
             name: teamName
         };
+
+
         let teamPoints = {
             $inc: {
                 points: points
             }
         }
 
+        let history = {
+            name: name,
+            game: game,
+            points: points
+        }
+
 
         collection.updateOne(teamIdentifier, teamPoints, (err, item) => {
             if (err) {
-                res.send({ "Error is ": + err });
+                res.send({ "104 Error is ": + err });
             }
             else {
+
                 console.log("Added " + points + " points to " + teamName);
+            
             }
-        })
+        });
+        element3History.insertOne(history, (err, item) => {
+            if (err) {
+                console.log(131, err);
+                res.send({ "131 Error is ": + err });
+            }
+            else {
+                console.log("Saved history successfully");
+            }
+        });
+
+
+
+
+
         res.redirect("/");
     });
+
+    app.post('/saveHistory', (req, res) => {
+
+
+
+        let history = {
+            name: "Billy",
+            game: "TFT",
+            points: 50
+        }
+
+
+        element3History.insertOne(history, (err, item) => {
+            if (err) {
+                console.log(131, err);
+                res.send({ "131 Error is ": + err });
+            }
+            else {
+                console.log("Saved history successfully");
+            }
+        });
+        console.log("History saved successfully");
+        res.redirect("/");
+
+    });
+
+
+
 
 
 
