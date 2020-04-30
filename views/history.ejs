@@ -1,0 +1,37 @@
+
+
+<div class="table-responsive">
+  <table class="table">
+    <thead class="thead-dark">
+      <tr class="text-center">
+        <th scope="col">Name</th>
+        <th scope="col">Team</th>
+        <th scope="col">Game</th>
+        <th scope="col">Points</th>
+  
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i < result.length; i++) { %>
+  
+        <tr class="text-center">
+  
+          <td>
+            <%= result[i].name%>
+          </td>
+          <td>
+            <%= result[i].team%>
+          </td>
+          <td>
+            <%= result[i].game%>
+          </td>
+          <td>
+            <%= result[i].points%>
+          </td>
+        </tr>
+  
+        <% } %>
+  
+    </tbody>
+  </table>
+  </div>

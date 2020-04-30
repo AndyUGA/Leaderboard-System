@@ -42,11 +42,47 @@ client.connect(err => {
     app.get('/leaderboard', (req, res) => {
 
         collection.find({}).toArray(function (err, result) {
-            console.log(result);
+           
 
 
             res.render("leaderboard", {
                 title: "Leaderboard",
+                result: result
+            });
+        });
+    });
+
+    app.get('/history', (req, res) => {
+
+        let searchCriteria = {
+
+        };
+
+        element3History.find(searchCriteria).toArray(function (err, result) {
+          
+
+
+            res.render("history", {
+                title: "history",
+                result: result
+            });
+        });
+    });
+
+    app.get('/history/:team', (req, res) => {
+
+        const team = req.params.team;
+
+        let searchCriteria = {
+            team: team
+        };
+
+        element3History.find(searchCriteria).toArray(function (err, result) {
+          
+
+
+            res.render("history", {
+                title: "history",
                 result: result
             });
         });
@@ -70,6 +106,9 @@ client.connect(err => {
 
 
     });
+
+
+
 
     app.post('/increasePoints', (req, res) => {
 
@@ -98,7 +137,8 @@ client.connect(err => {
         let history = {
             name: name,
             game: game,
-            points: points
+            points: points,
+            team: teamName,
         }
 
 

@@ -1,26 +1,5 @@
 
 
-
-<!-- 
-<div class="container py-5">
-  <div class="row text-center">
-    <div class="col-6 col-md-3 pb-3 pb-md-0">
-      <img class="img-fluid maxCardWidth" src="./Images/earth.png" alt="Card image cap">
-    </div>
-    <div class="col-6 col-md-3 pb-3 pb-md-0">
-      <img class="img-fluid maxCardWidth" src="./Images/water.png" alt="Card image cap">
-    </div>
-    <div class="col-6 col-md-3">
-      <img class="img-fluid maxCardWidth" src="./Images/wind.png" alt="Card image cap">
-    </div>
-    <div class="col-6 col-md-3">
-      <img class="img-fluid maxCardWidth" src="./Images/fire.png" alt="Card image cap">
-    </div>
-  </div>
-</div>
--->
-
-
 <div class="table-responsive">
 <table class="table">
   <thead class="thead-dark">
@@ -36,7 +15,11 @@
       <tr class="text-center">
 
         <td>
-          <%= result[i].name%>
+          <a href="/history/<%=result[i].name %>">
+            <%= result[i].name%>
+          </a>
+          
+      
         </td>
         <td>
           <%= result[i].points%>
