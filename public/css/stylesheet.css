@@ -26,4 +26,5 @@ a {
 
 .linkColor {
     color: black !important;
+    text-decoration: underline;
 }
