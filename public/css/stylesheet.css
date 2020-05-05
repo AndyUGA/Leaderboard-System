@@ -9,3 +9,21 @@
 .maxCardWidth {
     width:200px;
 }
+
+.UVSASEColors {
+    color: white !important;
+    background-color: #009FB7 !important;
+    border-color: #009FB7 !important;
+}
+
+a {
+    color: white !important;
+}
+
+.UVSASENavbarColor {
+    background-color: #114B5F !important;
+}
+
+.linkColor {
+    color: black !important;
+}
