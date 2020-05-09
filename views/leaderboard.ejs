@@ -1,25 +1,23 @@
-
-
 <div class="table-responsive">
-<table class="table">
-  <thead class="">
-    <tr class="text-center">
-      <th scope="col">Name</th>
-      <th scope="col">Points</th>
+  <table class="table">
+    <thead class="">
+      <tr class="text-center">
+        <th scope="col">Name</th>
+        <th scope="col">Points</th>
 
-    </tr>
-  </thead>
-  <tbody>
-    <% for(let i = 0; i < result.length; i++) { %>
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i < result.length; i++) { %>
 
       <tr class="text-center">
 
         <td>
-          <a class = "linkColor" href="/history/<%=result[i].name %>">
+          <a class="linkColor" href="/history/<%=result[i].name %>">
             <%= result[i].name%>
           </a>
-          
-      
+
+
         </td>
         <td>
           <%= result[i].points%>
@@ -28,6 +26,6 @@
 
       <% } %>
 
-  </tbody>
-</table>
+    </tbody>
+  </table>
 </div>

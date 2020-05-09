@@ -42,7 +42,7 @@ client.connect(err => {
     app.get('/leaderboard', (req, res) => {
 
         collection.find({}).toArray(function (err, result) {
-           
+
 
 
             res.render("leaderboard", {
@@ -59,7 +59,7 @@ client.connect(err => {
         };
 
         element3History.find(searchCriteria).toArray(function (err, result) {
-          
+
 
 
             res.render("history", {
@@ -78,7 +78,7 @@ client.connect(err => {
         };
 
         element3History.find(searchCriteria).toArray(function (err, result) {
-          
+
 
 
             res.render("history", {
@@ -149,7 +149,7 @@ client.connect(err => {
             else {
 
                 console.log("Added " + points + " points to " + teamName);
-            
+
             }
         });
         element3History.insertOne(history, (err, item) => {
