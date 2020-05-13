@@ -41,7 +41,8 @@ client.connect(err => {
 
     app.get('/leaderboard', (req, res) => {
 
-        collection.find({}).toArray(function (err, result) {
+        
+        collection.find({}).sort({points: -1}).toArray(function (err, result) {
 
 
 
