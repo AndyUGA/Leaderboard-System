@@ -70,7 +70,7 @@ client.connect(err => {
         });
     });
 
-    app.get('/history/:team', (req, res) => {
+    app.get('/:team', (req, res) => {
 
         const team = req.params.team;
 
