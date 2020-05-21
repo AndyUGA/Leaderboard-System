@@ -1,10 +1,11 @@
 <div class="table-responsive">
     <h1 class = "text-center my-3">
-        Leaderboards
+       UVSASE Gameday Leaderboards
       </h1>
   <table class="table">
     <thead class="">
       <tr class="text-center">
+        <th scope="col">Place </th>
         <th scope="col">Name</th>
         <th scope="col">Points</th>
 
@@ -14,7 +15,9 @@
       <% for(let i = 0; i < result.length; i++) { %>
 
       <tr class="text-center">
-
+        <td>
+          <%= i + 1%>
+        </td>
         <td>
           <a class="linkColor" href="/history/<%=result[i].name %>">
             <%= result[i].name%>
