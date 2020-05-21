@@ -1,0 +1,37 @@
+<div class="table-responsive">
+    <h1 class = "text-center my-3">
+       UVSASE Gameday Leaderboards
+      </h1>
+  <table class="table">
+    <thead class="">
+      <tr class="text-center">
+        <th scope="col">Place </th>
+        <th scope="col">Name</th>
+        <th scope="col">Points</th>
+
+      </tr>
+    </thead>
+    <tbody>
+      <% for(let i = 0; i < result.length; i++) { %>
+
+      <tr class="text-center">
+        <td>
+          <%= i + 1%>
+        </td>
+        <td>
+          <a class="linkColor" href="/team/<%=result[i].name %>">
+            <%= result[i].name%>
+          </a>
+
+
+        </td>
+        <td>
+          <%= result[i].points%>
+        </td>
+      </tr>
+
+      <% } %>
+
+    </tbody>
+  </table>
+</div>

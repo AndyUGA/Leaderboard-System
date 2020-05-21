@@ -39,20 +39,43 @@ client.connect(err => {
     });
 
 
-    app.get('/leaderboard', (req, res) => {
+    app.get('/teamLeaderboard', (req, res) => {
 
         
         collection.find({}).sort({points: -1}).toArray(function (err, result) {
 
 
 
-            res.render("leaderboard", {
-                title: "Leaderboard",
+            res.render("teamLeaderboard", {
+                title: "Team Leaderboard",
                 result: result
             });
         });
     });
 
+    app.get('/individualLeaderboard', (req, res) => {
+
+       
+        element3History.aggregate([ { 
+            $group: { 
+                _id: "$name", 
+                points: { 
+                    $sum: "$points" 
+                } 
+            } 
+        } ] ).sort({points: -1}).toArray(function (err, result) {
+         
+            console.log(68, result); 
+            res.render("individualLeaderboard", {
+                title: "Leaderboard",
+                result: result
+            });
+
+           
+        });
+
+
+    });
     app.get('/history', (req, res) => {
 
         let searchCriteria = {
@@ -70,7 +93,7 @@ client.connect(err => {
         });
     });
 
-    app.get('/:team', (req, res) => {
+    app.get('/team/:team', (req, res) => {
 
         const team = req.params.team;
 
@@ -88,6 +111,29 @@ client.connect(err => {
             });
         });
     });
+
+
+    
+    app.get('/individual/:individual', (req, res) => {
+
+        const individual = req.params.individual;
+
+        let searchCriteria = {
+            name: individual
+        };
+
+        element3History.find(searchCriteria).toArray(function (err, result) {
+
+
+
+            res.render("history", {
+                title: "history",
+                result: result
+            });
+        });
+    });
+
+    
 
 
     app.get('/saveImage', (req, res) => {
