@@ -4,9 +4,6 @@ Leaderboard system used during the UVSASE Virtual Gameday
 
 ![Image](https://github.com/AndyUGA/Element/blob/master/public/images/uvsase2.png)
 
-
-<p align = "middle"> Scanner </p>
-
 ![alt-text-1](https://github.com/AndyUGA/UVSASE-Gameday-Leaderboards/blob/master/public/README%20Images/README%20image.png?raw=true)
 
 ## Technologies utitilized in this project:
