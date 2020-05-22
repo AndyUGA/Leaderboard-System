@@ -8,20 +8,35 @@ label {
     font-weight: 500;
 }
 
-
-.imgWidth {
-    width: 20%;
-}
-
-
-.maxCardWidth {
-    width:200px;
+.titlecont {
+    color: #009FB7;
+    font-size: 3rem;
 }
 
 .UVSASEColors {
     color: white !important;
     background-color: #009FB7 !important;
     border-color: #009FB7 !important;
+}
+
+.leaderboardRowColor {
+
+    background-color: #114b5f !important;
+    border-color: #009FB7 !important;
+}
+
+.progress-bar-yellow {
+    background-color: #fed766 !important;
+}
+
+.rowHeight {
+    height: 4rem;
+}
+
+.nameFontSize {
+    font-size: 1.5rem;
+    color: white;
+    font-weight: 500;
 }
 
 a {
