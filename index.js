@@ -61,9 +61,19 @@ client.connect(err => {
                 _id: "$name", 
                 points: { 
                     $sum: "$points" 
-                } 
-            } 
-        } ] ).sort({points: -1}).toArray(function (err, result) {
+                },
+                team: {
+                    $addToSet: "$team"
+                }
+            }   
+        },
+        {
+            $project: {
+                points: 1,
+                team: 1
+            }
+        }
+     ] ).sort({points: -1}).toArray(function (err, result) {
          
             console.log(68, result); 
             res.render("individualLeaderboard", {

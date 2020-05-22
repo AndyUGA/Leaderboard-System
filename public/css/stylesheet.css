@@ -8,7 +8,7 @@ label {
     font-weight: 500;
 }
 
-.titlecont {
+.titleFont {
     color: #009FB7;
     font-size: 3rem;
 }
@@ -29,9 +29,6 @@ label {
     background-color: #fed766 !important;
 }
 
-.rowHeight {
-    height: 4rem;
-}
 
 .nameFontSize {
     font-size: 1.5rem;
@@ -46,7 +43,7 @@ a {
 
 .underLineName {
     text-decoration: none !important;
-    border-bottom: 1px solid black;
+    border-bottom: 1px solid white;
 }
 
 .UVSASENavbarColor {
@@ -54,6 +51,13 @@ a {
 }
 
 .linkColor {
-    color: black !important;
+    color: white !important;
     text-decoration: underline;
+}
+
+
+@media screen and (min-width: 700px) {
+    .rowHeight {
+        min-height: 4rem;
+    }
 }

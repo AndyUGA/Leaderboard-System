@@ -1,13 +1,13 @@
 <div class="table-responsive">
-    <h1 class = "text-center my-5 titlecont">
-      Individual Leaderboard
-      </h1>
+  <h1 class="text-center my-5 titleFont">
+    Individual Leaderboard
+  </h1>
 
- 
-      <div class="container">
-        <% for(let i = 0; i < result.length; i++) { %>
 
-          <!--   
+  <div class="container">
+    <% for(let i = 0; i < result.length; i++) { %>
+
+    <!--   
           <% if(i == 0 ) { %> 
             <div class="row leaderboardRowColor3 mx-3 shadow rounded nameFontSize align-items-center">
               <div class="col d-flex justify-content-center text-center">
@@ -17,29 +17,36 @@
             <% } %>
             -->
 
-        <div class="row leaderboardRowColor rowHeight mx-3 mx-sm-0 shadow rounded nameFontSize align-items-center">
+    <div class="row leaderboardRowColor rowHeight mx-3 mx-sm-0 shadow rounded nameFontSize align-items-center">
 
-         
-          <div class="col">
-            <%= i + 1%>
-          </div>
-          <div class="col d-flex justify-content-center text-center">
-            <%= result[i]._id %>
-          </div>
-          <div class="col d-flex justify-content-end">
-            <%= result[i].points%>
-            
-          </div>
-          
-        </div>
 
-      
-        <div class="progress mx-3 mx-sm-0 mb-3">
-          <div class="progress-bar progress-bar-yellow" role="progressbar" style="width: <%=(result[i].points / result[0].points) * 100  %>%" aria-valuemax="100"></div>
-        </div>
-        <% } %>
+      <div class="col-3 col-sm d-flex justify-content-center">
+        <%= i + 1%>
       </div>
-     
+      <div class="col-3 col-sm d-flex justify-content-center text-center">
+
+        <a class="linkColor underLineName" href="/individual/<%=result[i]._id %>">
+          <%= result[i]._id %> 
+        </a>
+      </div>
+      <div class="col-3 col-sm d-flex justify-content-center text-center">
+        <%= result[i].team%>
+      </div>
+      <div class="col-3 col-sm d-flex justify-content-end">
+        <%= result[i].points%>
+
+      </div>
+
+    </div>
+
+
+    <div class="progress mx-3 mx-sm-0 mb-3">
+      <div class="progress-bar progress-bar-yellow" role="progressbar"
+        style="width: <%=(result[i].points / result[0].points) * 100  %>%" aria-valuemax="100"></div>
+    </div>
+    <% } %>
+  </div>
+
 
 
 </div>
