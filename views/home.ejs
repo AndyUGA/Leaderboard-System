@@ -2,17 +2,19 @@
 
 <div class="container">
    
-  <div class="row min-vh-100 align-items-center">
+  <div class="row min-vh-100">
     
     <div class="col">
 
-     
+      <h1 class = "text-center my-5">
+        Points Submission
+        </h1>
       <div class="card">
 
         <div class="card-body">
           <form method="POST" action = "/increasePoints">
             <div class="form-group">
-              <label for="exampleInputEmail1">
+              <label class = "labelTitle">
                 School
               </label>
 
@@ -26,14 +28,14 @@
             </div>
 
             <div class="form-group">
-              <label for="exampleInputEmail1">
+              <label>
                Player
               </label>
               <input type="text" class="form-control" name = "player">
             </div>
 
             <div class="form-group">
-              <label for="exampleInputEmail1">
+              <label>
                Game
               </label>
               <input type="text" class="form-control" name = "game">
@@ -43,7 +45,7 @@
 
 
             <div class="form-group">
-              <label for="exampleInputPassword1">
+              <label>
                 Points
               </label>
               <input type="number" class="form-control" name = "points">

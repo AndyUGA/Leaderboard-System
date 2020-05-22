@@ -1,4 +1,12 @@
 
+* {
+    font-family: 'Raleway', sans-serif;
+}
+
+
+label {
+    font-weight: 500;
+}
 
 
 .imgWidth {
