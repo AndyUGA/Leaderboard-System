@@ -22,25 +22,14 @@ app.set("view engine", "ejs");
 
 
 client.connect(err => {
-    const collection = client.db("test").collection("Element3");
+  
     const element3History = client.db("test").collection("Element3History");
 
 
     //Render submission form
     app.get('/', (req, res) => {
 
-
-        let schools = [
-            "Auburn University (AU)", "Clemson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
-            "Georgia State University (GSU)", "Kennesaw State University (KSU)", "Mercer University (Mercer)", "University of Alabama at Birmingham (UAB)", "University of Central Florida (UCF)", "University of Florida (UF)", "University of Georgia (UGA)",
-            "University of North Carolina at Charlotte (UNCC)", "University of North Carolina at Greensboro (UNCG)", "University of Memphis (UM)",
-            "University of South Carolina (USC)", "University of South Florida (USF)", "University of West Florida (UWF)",
-        ];
-
-        res.render("home", {
-            title: "Home",
-            schools,
-        });
+        res.redirect("/individualLeaderboard")
     })
 
     //Leaderboard displaying all teams
@@ -123,23 +112,7 @@ client.connect(err => {
 
     });
 
-    //History page to display info about submissions 
-    app.get('/history', (req, res) => {
-
-        let searchCriteria = {
-
-        };
-
-        element3History.find(searchCriteria).toArray(function (err, result) {
-
-
-
-            res.render("history", {
-                title: "history",
-                result: result
-            });
-        });
-    });
+ 
 
     //Leaderboard displaying specific team
     app.get('/team/:team', (req, res) => {
@@ -180,105 +153,6 @@ client.connect(err => {
             });
         });
     });
-
-
-
-    //Submit points into system
-    app.post('/increasePoints', (req, res) => {
-
-        const personID = req.params.id;
-        const points = parseInt(req.body.points);
-        const teamName = req.body.teamName;
-
-        const name = req.body.player;
-        const game = req.body.game;
-
-        console.log(80, teamName);
-        console.log(81, points);
-
-        //const attendeeID = { _id: new ObjectID(personID) };
-        const teamIdentifier = {
-            name: teamName
-        };
-
-
-        let teamPoints = {
-            $inc: {
-                points: points
-            }
-        }
-
-        let tempDate = new Date().toString();
-
-        let finalDate = tempDate.substring(0, 25);
-
-        let history = {
-            name: name,
-            game: game,
-            points: points,
-            team: teamName,
-            date: finalDate,
-        }
-
-
-        collection.updateOne(teamIdentifier, teamPoints, (err, item) => {
-            if (err) {
-                res.send({ "104 Error is ": + err });
-            }
-            else {
-
-                console.log("Added " + points + " points to " + teamName);
-
-            }
-        });
-        element3History.insertOne(history, (err, item) => {
-            if (err) {
-                console.log(131, err);
-                res.send({ "131 Error is ": + err });
-            }
-            else {
-                console.log("Saved history successfully");
-            }
-        });
-
-
-
-
-
-        res.redirect("/");
-    });
-
-    //Save history into system 
-    app.post('/saveHistory', (req, res) => {
-
-
-
-        let history = {
-            name: "Billy",
-            game: "TFT",
-            points: 50,
-            date: new Date(),
-        }
-
-        console.log(240, history);
-        element3History.insertOne(history, (err, item) => {
-            if (err) {
-                console.log(131, err);
-                res.send({ "131 Error is ": + err });
-            }
-            else {
-                console.log("Saved history successfully");
-            }
-        });
-        console.log("History saved successfully");
-        res.redirect("/");
-
-    });
-
-
-
-
-
 
 
 });
