@@ -191,11 +191,16 @@ client.connect(err => {
             }
         }
 
+        let tempDate = new Date().toString(); 
+      
+        let finalDate = tempDate.substring(0,25);
+   
         let history = {
             name: name,
             game: game,
             points: points,
             team: teamName,
+            date: finalDate,
         }
 
 
@@ -233,10 +238,11 @@ client.connect(err => {
         let history = {
             name: "Billy",
             game: "TFT",
-            points: 50
+            points: 50, 
+            date: new Date(),
         }
 
-
+        console.log(240, history);
         element3History.insertOne(history, (err, item) => {
             if (err) {
                 console.log(131, err);

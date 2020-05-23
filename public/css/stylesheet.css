@@ -31,7 +31,7 @@ label {
 
 .leaderboardRowColor {
 
-    background-color: var(--UVSASE-dark-blue) !important;
+    background-color: var(--UVSASE-light-blue) !important;
     border-color: var(--UVSASE-light-blue) !important;
 }
 
@@ -44,6 +44,16 @@ label {
     font-size: 1.5rem;
     color: white;
     font-weight: 500;
+}
+
+.pointsFontSize {
+    font-size: 2rem;
+    color: black !important;
+    font-weight: 200;
+}
+
+.pointsHeight {
+    height: 20px;
 }
 
 a {
