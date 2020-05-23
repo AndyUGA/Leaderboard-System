@@ -25,11 +25,13 @@ client.connect(err => {
     const collection = client.db("test").collection("Element3");
     const element3History = client.db("test").collection("Element3History");
 
+
+    //Render submission form
     app.get('/', (req, res) => {
 
 
         let schools = [
-            "Auburn University (AU)", "Clemnson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
+            "Auburn University (AU)", "Clemson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
             "Georgia State University (GSU)", "Kennesaw State University (KSU)", "Mercer University (Mercer)", "University of Alabama at Birmingham (UAB)", "University of Central Florida (UCF)", "University of Florida (UF)", "University of Georgia (UGA)",
             "University of North Carolina at Charlotte (UNCC)", "University of North Carolina at Greensboro (UNCG)", "University of Memphis (UM)",
             "University of South Carolina (USC)", "University of South Florida (USF)", "University of West Florida (UWF)",
@@ -41,13 +43,7 @@ client.connect(err => {
         });
     })
 
-    app.get('/scanner', (req, res) => {
-        res.render("scanner", {
-            title: "QR Code Scanner"
-        });
-    });
-
-
+    //Leaderboard displaying all teams
     app.get('/teamLeaderboard', (req, res) => {
 
         element3History.aggregate([{
@@ -74,8 +70,7 @@ client.connect(err => {
       
     })
 
-  
-
+     //Leaderboard filtered by individuals
     app.get('/individualLeaderboard', (req, res) => {
 
 
@@ -127,6 +122,8 @@ client.connect(err => {
 
 
     });
+
+    //History page to display info about submissions 
     app.get('/history', (req, res) => {
 
         let searchCriteria = {
@@ -144,6 +141,7 @@ client.connect(err => {
         });
     });
 
+    //Leaderboard displaying specific team
     app.get('/team/:team', (req, res) => {
 
         const team = req.params.team;
@@ -163,8 +161,7 @@ client.connect(err => {
         });
     });
 
-
-
+    //Leaderboard displaying specific individual
     app.get('/individual/:individual', (req, res) => {
 
         const individual = req.params.individual;
@@ -186,7 +183,7 @@ client.connect(err => {
 
 
 
-
+    //Submit points into system
     app.post('/increasePoints', (req, res) => {
 
         const personID = req.params.id;
@@ -251,6 +248,7 @@ client.connect(err => {
         res.redirect("/");
     });
 
+    //Save history into system 
     app.post('/saveHistory', (req, res) => {
 
 
