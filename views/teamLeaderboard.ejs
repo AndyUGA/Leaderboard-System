@@ -1,11 +1,23 @@
-<div class="table-responsive">
+
   <h1 class="text-center my-5 titleFont">
-    Team Leaderboard
+    School 
   </h1>
 
 
 
   <div class="container">
+    <div class="row leaderboardRowColor rowHeight mx-3 mx-sm-0 shadow rounded nameFontSize align-items-center mb-3">
+      <div class=" col-sm d-flex justify-content-center">
+        Rank
+      </div>
+     
+      <div class=" col-sm d-flex justify-content-center">
+          School
+      </div>
+      <div class=" col-sm d-flex justify-content-center">
+        Points
+      </div>
+    </div>
     <% for(let i = 0; i < result.length; i++) { %>
 
     <!--   
@@ -21,7 +33,7 @@
     <div class="row leaderboardRowColor rowHeight mx-3 mx-sm-0 shadow rounded nameFontSize align-items-center">
 
 
-      <div class="col">
+      <div class="col d-flex justify-content-center">
         <%= i + 1%>
       </div>
       <div class="col d-flex justify-content-center text-center">
@@ -29,7 +41,7 @@
           <%= result[i].name%>
         </a>
       </div>
-      <div class="col d-flex justify-content-end">
+      <div class="col d-flex justify-content-center">
         <%= result[i].points%>
 
       </div>
@@ -44,10 +56,3 @@
     <% } %>
   </div>
 
-
-
-
-
-
-
-</div>

@@ -1,4 +1,14 @@
 
+
+:root {
+    --UVSASE-dark-blue: #114b5f;
+    --UVSASE-yellow: #fed766;
+    --UVSASE-light-blue: #009fb7;
+    --UVSASE-dark-grey: #696733;
+    --UVSASE-light-grey: #eff1f3;
+}
+
+
 * {
     font-family: 'Raleway', sans-serif;
 }
@@ -15,18 +25,18 @@ label {
 
 .UVSASEColors {
     color: white !important;
-    background-color: #009FB7 !important;
-    border-color: #009FB7 !important;
+    background-color: var(--UVSASE-light-blue) !important;
+    border-color: var(--UVSASE-light-blue) !important;
 }
 
 .leaderboardRowColor {
 
-    background-color: #114b5f !important;
-    border-color: #009FB7 !important;
+    background-color: var(--UVSASE-dark-blue) !important;
+    border-color: var(--UVSASE-light-blue) !important;
 }
 
 .progress-bar-yellow {
-    background-color: #fed766 !important;
+    background-color: var(--UVSASE-yellow) !important;
 }
 
 
@@ -47,7 +57,7 @@ a {
 }
 
 .UVSASENavbarColor {
-    background-color: #114B5F !important;
+    background-color: var(--UVSASE-dark-blue) !important;
 }
 
 .linkColor {
