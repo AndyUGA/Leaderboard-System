@@ -2,9 +2,9 @@
 # UVSASE Virtual Gameday Leaderboards
 Leaderboard system used during the UVSASE Virtual Gameday
 
-![Image](https://github.com/AndyUGA/Element/blob/master/public/images/uvsase2.png)
 
-![alt-text-1](https://github.com/AndyUGA/UVSASE-Gameday-Leaderboards/blob/master/public/README%20Images/README%20image.png?raw=true)
+
+![alt-text-1](https://raw.githubusercontent.com/AndyUGA/UVSASE-Gameday-Leaderboards/a9390e9d494cd38304294a192c1b7e3c5b49794e/public/README%20Images/README%20image.png)
 
 ## Technologies utitilized in this project:
 - [Node.js](https://nodejs.org/en/) 
