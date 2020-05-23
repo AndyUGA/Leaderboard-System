@@ -31,7 +31,7 @@ client.connect(err => {
 
 
         let schools = [
-            "Auburn University (AU)", "Clemson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
+            "Alumni (Alumni)","Auburn University (AU)", "Clemson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
             "Georgia State University (GSU)", "Kennesaw State University (KSU)", "Mercer University (Mercer)", "University of Alabama at Birmingham (UAB)", "University of Central Florida (UCF)", "University of Florida (UF)", "University of Georgia (UGA)",
             "University of North Carolina at Charlotte (UNCC)", "University of North Carolina at Greensboro (UNCG)", "University of Memphis (UM)",
             "University of South Carolina (USC)", "University of South Florida (USF)", "University of West Florida (UWF)",
