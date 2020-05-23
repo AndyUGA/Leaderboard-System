@@ -36,9 +36,9 @@
       <div class="col d-flex justify-content-center">
         <%= i + 1%>
       </div>
-      <div class="col d-flex justify-content-center text-center">
-        <a class="linkColor underLineName" href="/team/<%=result[i].name %>">
-          <%= result[i].name%>
+      <div class="col d-flex justify-content-center text-center mb-3">
+        <a class="linkColor underLineName" href="/team/<%=result[i]._id %>">
+          <%= result[i]._id%>
         </a>
       </div>
       <div class="col d-flex justify-content-center">
@@ -49,7 +49,7 @@
     </div>
 
 
-    <div class="progress mx-3 mx-sm-0 mb-3" style="height: 30px;">
+    <div class="progress mx-3 mx-sm-0" style="height: 30px;">
       <div class="progress-bar progress-bar-yellow" role="progressbar"
         style="width: <%=(result[i].points / result[0].points) * 100  %>%" aria-valuemax="100"></div>
     </div>

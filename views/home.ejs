@@ -19,9 +19,11 @@
               </label>
 
               <select class="form-control" name="teamName">
-                <option> Team 1</option>
-                <option> Team 2</option>
-                <option> Team 3</option>
+                <% for (let i = 0; i < schools.length; i++) { %>
+                  <option> <%= schools[i] %></option>
+                <% } %>
+             
+              
               
               </select>
 

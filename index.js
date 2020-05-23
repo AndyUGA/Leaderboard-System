@@ -27,8 +27,17 @@ client.connect(err => {
 
     app.get('/', (req, res) => {
 
+
+        let schools = [
+            "Auburn University (AU)", "Clemnson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
+            "Georgia State University (GSU)", "Kennesaw State University (KSU)", "Mercer University (Mercer)", "University of Alabama at Birmingham (UAB)", "University of Central Florida (UCF)", "University of Florida (UF)", "University of Georgia (UGA)",
+            "University of North Carolina at Charlotte (UNCC)", "University of North Carolina at Greensboro (UNCG)", "University of Memphis (UM)",
+            "University of South Carolina (USC)", "University of South Florida (USF)", "University of West Florida (UWF)",
+        ];
+
         res.render("home", {
-            title: "Home"
+            title: "Home",
+            schools,
         });
     })
 
@@ -41,31 +50,45 @@ client.connect(err => {
 
     app.get('/teamLeaderboard', (req, res) => {
 
-        
-        collection.find({}).sort({points: -1}).toArray(function (err, result) {
-
+        element3History.aggregate([{
+            $group: {
+                _id: "$team",
+                points: {
+                    $sum: "$points"
+                },
+               
+            }
+        },
+      
+        ]).sort({ points: -1 }).toArray(function (err, result) { 
+            console.log(71, result);
 
 
             res.render("teamLeaderboard", {
                 title: "Team Leaderboard",
                 result: result
             });
-        });
-    });
+        });;
+
+     
+      
+    })
+
+  
 
     app.get('/individualLeaderboard', (req, res) => {
 
-       
-        element3History.aggregate([ { 
-            $group: { 
-                _id: "$name", 
-                points: { 
-                    $sum: "$points" 
+
+        element3History.aggregate([{
+            $group: {
+                _id: "$name",
+                points: {
+                    $sum: "$points"
                 },
                 team: {
                     $addToSet: "$team"
                 }
-            }   
+            }
         },
         {
             $project: {
@@ -73,15 +96,33 @@ client.connect(err => {
                 team: 1
             }
         }
-     ] ).sort({points: -1}).toArray(function (err, result) {
-         
-            console.log(68, result); 
-            res.render("individualLeaderboard", {
-                title: "Leaderboard",
-                result: result
-            });
+        ]).sort({ points: -1 }).toArray(function (err, result) {
 
            
+
+            let schoolAbbreviations = [
+
+            ];
+
+            for(let i = 0; i < result.length; i++) {
+                let currentSchool = result[i].team[0];
+                console.log(95, currentSchool);
+                let abbreviation = (currentSchool.indexOf('('));
+                let abbreviation2 = (currentSchool).indexOf(')');
+                console.log(97, abbreviation);
+                console.log(97, abbreviation2);
+                console.log(currentSchool.substring((abbreviation+1), abbreviation2));
+                schoolAbbreviations[i] = currentSchool.substring((abbreviation+1), abbreviation2);
+            }
+
+
+            res.render("individualLeaderboard", {
+                title: "Leaderboard",
+                result: result,
+                schoolAbbreviations,
+            });
+
+
         });
 
 
@@ -111,19 +152,19 @@ client.connect(err => {
             team: team
         };
 
-        element3History.find(searchCriteria).toArray(function (err, result) {
+        element3History.find(searchCriteria).sort({points: -1}).toArray(function (err, result) {
 
 
 
             res.render("history", {
-                title: "history",
+                title: "School",
                 result: result
             });
         });
     });
 
 
-    
+
     app.get('/individual/:individual', (req, res) => {
 
         const individual = req.params.individual;
@@ -137,31 +178,10 @@ client.connect(err => {
 
 
             res.render("history", {
-                title: "history",
+                title: "Individual",
                 result: result
             });
         });
-    });
-
-    
-
-
-    app.get('/saveImage', (req, res) => {
-
-        axios.get('https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=Example')
-            .then(function (response) {
-
-                console.log(response);
-                require("fs").writeFile("out.png", response.data, function (err) {
-                    console.log(err);
-                });
-            })
-            .catch(function (error) {
-                // handle error
-                console.log(error);
-            })
-
-
     });
 
 
@@ -191,10 +211,10 @@ client.connect(err => {
             }
         }
 
-        let tempDate = new Date().toString(); 
-      
-        let finalDate = tempDate.substring(0,25);
-   
+        let tempDate = new Date().toString();
+
+        let finalDate = tempDate.substring(0, 25);
+
         let history = {
             name: name,
             game: game,
@@ -238,7 +258,7 @@ client.connect(err => {
         let history = {
             name: "Billy",
             game: "TFT",
-            points: 50, 
+            points: 50,
             date: new Date(),
         }
 

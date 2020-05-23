@@ -3,10 +3,13 @@
     <thead class="">
       <tr class="text-center">
         <th scope="col">Name</th>
-        <th scope="col">Team</th>
+        <th scope="col">School</th>
         <th scope="col">Game</th>
         <th scope="col">Points</th>
+
+        <% if(title == "history") { %>
         <th scope="col">Time</th>
+        <% } %>
       </tr>
     </thead>
     <tbody>
@@ -26,9 +29,14 @@
         <td>
           <%= result[i].points%>
         </td>
+
+        <% if(title == "history") { %>
         <td>
           <%= result[i].date%>
         </td>
+
+        <% } %>
+
       </tr>
 
       <% } %>
