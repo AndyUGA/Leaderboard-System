@@ -26,4 +26,4 @@ Leaderboard system used during the UVSASE Virtual Gameday
 ## Live Preview
 [Admin View](https://uvsase-gameday-leaderboards.herokuapp.com/)
 <br>
-[Attendee View](https://uvsase-leaderboard-attendee.herokuapp.com/leaderboard)
+[Attendee View](https://uvsase-leaderboard-attendee.herokuapp.com)
