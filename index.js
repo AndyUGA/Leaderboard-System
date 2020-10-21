@@ -31,7 +31,7 @@ client.connect(err => {
 
 
         let schools = [
-            "Alumni (Alumni)","Auburn University (AU)", "Clemson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
+            "Alumni (Alumni)", "Auburn University (AU)", "Clemson University (Clemson)", "Emory University (Emory)", "Florida Atlantic University (FAU)", "Florida State University (FSU)", "Georgia Institute of Technology (GT) ",
             "Georgia State University (GSU)", "Kennesaw State University (KSU)", "Mercer University (Mercer)", "University of Alabama at Birmingham (UAB)", "University of Central Florida (UCF)", "University of Florida (UF)", "University of Georgia (UGA)",
             "University of North Carolina at Charlotte (UNCC)", "University of North Carolina at Greensboro (UNCG)", "University of Memphis (UM)",
             "University of South Carolina (USC)", "University of South Florida (USF)", "University of West Florida (UWF)",
@@ -52,11 +52,11 @@ client.connect(err => {
                 points: {
                     $sum: "$points"
                 },
-               
+
             }
         },
-      
-        ]).sort({ points: -1 }).toArray(function (err, result) { 
+
+        ]).sort({ points: -1 }).toArray(function (err, result) {
             console.log(71, result);
 
 
@@ -66,11 +66,11 @@ client.connect(err => {
             });
         });;
 
-     
-      
+
+
     })
 
-     //Leaderboard filtered by individuals
+    //Leaderboard filtered by individuals
     app.get('/individualLeaderboard', (req, res) => {
 
 
@@ -93,21 +93,21 @@ client.connect(err => {
         }
         ]).sort({ points: -1 }).toArray(function (err, result) {
 
-           
+
 
             let schoolAbbreviations = [
 
             ];
 
-            for(let i = 0; i < result.length; i++) {
+            for (let i = 0; i < result.length; i++) {
                 let currentSchool = result[i].team[0];
                 console.log(95, currentSchool);
                 let abbreviation = (currentSchool.indexOf('('));
                 let abbreviation2 = (currentSchool).indexOf(')');
                 console.log(97, abbreviation);
                 console.log(97, abbreviation2);
-                console.log(currentSchool.substring((abbreviation+1), abbreviation2));
-                schoolAbbreviations[i] = currentSchool.substring((abbreviation+1), abbreviation2);
+                console.log(currentSchool.substring((abbreviation + 1), abbreviation2));
+                schoolAbbreviations[i] = currentSchool.substring((abbreviation + 1), abbreviation2);
             }
 
 
@@ -150,7 +150,7 @@ client.connect(err => {
             team: team
         };
 
-        element3History.find(searchCriteria).sort({points: -1}).toArray(function (err, result) {
+        element3History.find(searchCriteria).sort({ points: -1 }).toArray(function (err, result) {
 
 
 
