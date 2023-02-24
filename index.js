@@ -22,15 +22,15 @@ app.set("view engine", "ejs");
 
 
 client.connect(err => {
-  
+
     const element3History = client.db("test").collection("Element3History");
 
 
     //Render submission form
-    app.get('/', (req, res) => {
+    // app.get('/', (req, res) => {
 
-        res.redirect("/individualLeaderboard")
-    })
+    //     res.redirect("/individualLeaderboard")
+    // })
 
     //Leaderboard displaying all teams
     app.get('/teamLeaderboard', (req, res) => {
@@ -41,12 +41,12 @@ client.connect(err => {
                 points: {
                     $sum: "$points"
                 },
-               
+
             }
         },
-      
-        ]).sort({ points: -1 }).toArray(function (err, result) { 
-            console.log(71, result);
+
+        ]).sort({ points: -1 }).toArray(function (err, result) {
+
 
 
             res.render("teamLeaderboard", {
@@ -55,12 +55,12 @@ client.connect(err => {
             });
         });;
 
-     
-      
+
+
     })
 
-     //Leaderboard filtered by individuals
-    app.get('/individualLeaderboard', (req, res) => {
+    //Leaderboard filtered by individuals
+    app.get('/', (req, res) => {
 
 
         element3History.aggregate([{
@@ -82,21 +82,19 @@ client.connect(err => {
         }
         ]).sort({ points: -1 }).toArray(function (err, result) {
 
-           
+
 
             let schoolAbbreviations = [
 
             ];
 
-            for(let i = 0; i < result.length; i++) {
+            for (let i = 0; i < result.length; i++) {
                 let currentSchool = result[i].team[0];
-                console.log(95, currentSchool);
+
                 let abbreviation = (currentSchool.indexOf('('));
                 let abbreviation2 = (currentSchool).indexOf(')');
-                console.log(97, abbreviation);
-                console.log(97, abbreviation2);
-                console.log(currentSchool.substring((abbreviation+1), abbreviation2));
-                schoolAbbreviations[i] = currentSchool.substring((abbreviation+1), abbreviation2);
+
+                schoolAbbreviations[i] = currentSchool.substring((abbreviation + 1), abbreviation2);
             }
 
 
@@ -112,7 +110,7 @@ client.connect(err => {
 
     });
 
- 
+
 
     //Leaderboard displaying specific team
     app.get('/team/:team', (req, res) => {
@@ -123,7 +121,7 @@ client.connect(err => {
             team: team
         };
 
-        element3History.find(searchCriteria).sort({points: -1}).toArray(function (err, result) {
+        element3History.find(searchCriteria).sort({ points: -1 }).toArray(function (err, result) {
 
 
 
